@@ -1,0 +1,8 @@
+*[0-9]
+.*
+!.gitignore
+!.travis.yml
+/plugins/ValidateForm/
+/plugins/Convertor/
+/plugins/ContactForm/*
+!/plugins/ContactForm/*.xml
