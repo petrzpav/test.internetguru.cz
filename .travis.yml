@@ -2,7 +2,7 @@ deploy:
   provider: script
   script: deploy.sh
   on:
-    branch: master
+    branch: dev
 env:
   global:
     - WEBSITE=test.internetguru.cz
