@@ -1,3 +1,5 @@
+dist: trusty
+sudo: false
 deploy:
   provider: script
   script: deploy.sh
