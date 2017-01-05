@@ -5,13 +5,7 @@ TO_UPLOAD=()
 
 for file in ${CHANGED_FILES[@]}; do
   [[ "$file" == ".travis.yml" || "$file" == "deploy.sh" ]] && continue
-  TO_UPLOAD+=("$file")
+  curl -k --ftp-ssl --ftp-create-dirs -T "$(basename "$file")" -u "$FTP_USER":"$FTP_PASS" ftp://31.31.75.247:21/$WEBSITE/"$(dirname "$file")/"
 done
 
 
-if [[ ${#TO_UPLOAD[@]} -eq 0 ]]; then
-  echo "Nothing to update"
-else
-  echo "Udating ${TO_UPLOAD[@]}"
-  curl -k --ftp-ssl --ftp-create-dirs -T "{$(IFS=,; echo "${TO_UPLOAD[*]}")}" -u "$FTP_USER":"$FTP_PASS" ftp://31.31.75.247:21/$WEBSITE/
-fi
